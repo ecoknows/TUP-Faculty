@@ -3,11 +3,21 @@
     GLOBAL CSS
 */
 
+/* Default View properties */
+.flex {
+    display: flex;
+}
+
 /* SIZES */
+.height-100vh {height: 100vh}
 .width-fill {width: 100%;}
 .heigth-fill {height: 100%;}
+
+/* POSITIONS */
+.items-center { justify-content: center;}
+.items-middle { align-items: center;}
 
 
 /*COLOR*/
 .bg-white {background-color: white;}
-.bg-blue {background-color: blue;}
+.bg-red {background-color: red;}
