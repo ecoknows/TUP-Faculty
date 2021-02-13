@@ -1,9 +1,10 @@
-import React, {forwardRef} from 'react'
+import React, {forwardRef, HTMLAttributes} from 'react'
 import classNames from 'classnames';
+import { View } from '.';
 
 
-interface Props {
-    children: any,
+interface Props extends HTMLAttributes<HTMLDivElement>{
+    children: typeof View,
     className?: string,
 
     type?: string,
@@ -13,7 +14,6 @@ interface Props {
 }
 
 const defaultProps = {
-    flex: 'flex',
     backgroundColor: 'bg-white',
 }
 
@@ -39,7 +39,6 @@ const Text = forwardRef(
 
         const classes  = classNames(
             className,
-            defaultProps.flex,
             defaultProps.backgroundColor,
             type && `text-${type}`
         );
@@ -48,5 +47,7 @@ const Text = forwardRef(
             {children}</span>
     }
 )
+
+
 
 export default Text

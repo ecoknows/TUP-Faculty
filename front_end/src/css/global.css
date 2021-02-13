@@ -4,8 +4,9 @@
 */
 
 /* Default View properties */
-.flex {
+.view{
     display: flex;
+    background-color: white;
 }
 
 /* SIZES */
@@ -14,10 +15,13 @@
 .heigth-fill {height: 100%;}
 
 /* POSITIONS */
+.relative { position: relative; }
 .items-center { justify-content: center;}
 .items-middle { align-items: center;}
+.items-column { flex-direction: column;}
 
 
 /*COLOR*/
 .bg-white {background-color: white;}
 .bg-red {background-color: red;}
+.bg-blue {background-color: blue;}

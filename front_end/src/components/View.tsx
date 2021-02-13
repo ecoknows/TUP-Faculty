@@ -1,22 +1,20 @@
-import React, {forwardRef} from 'react'
+import React, {forwardRef,HTMLAttributes} from 'react'
 import classNames from 'classnames';
 
 
-interface Props {
+interface Props extends HTMLAttributes<HTMLDivElement>{
     children: any,
     className?: string,
     
     center?: boolean,
     middle?: boolean,
+    column?: boolean,
+    color?: string,
+    relative?: boolean,
+
 
     height?: string,
 }
-
-const defaultProps = {
-    flex: 'flex',
-    backgroundColor: 'bg-white',
-}
-
 
 const View = forwardRef(
     ({
@@ -25,6 +23,9 @@ const View = forwardRef(
 
         center,
         middle,
+        column,
+        color,
+        relative,
 
         height,
 
@@ -38,12 +39,14 @@ const View = forwardRef(
         }
 
         const classes  = classNames(
+            'view',
             className,
-            defaultProps.flex,
-            defaultProps.backgroundColor,
             height && `height-${height}`,
             center && `items-center`,
             middle && `items-middle`,
+            column && `items-column`,
+            color && `bg-${color}`,
+            relative && `relative`,
         );
 
         return <div {...props} className={classes}>

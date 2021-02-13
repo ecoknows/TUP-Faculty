@@ -1,0 +1,33 @@
+/* Default Input style */
+.input{
+    border-radius: .25rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    padding: .375rem;
+    width: 15rem;
+}
+.input-password{
+    padding-right: 35px;
+}
+.input:focus {
+    outline:0;
+    box-shadow:0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+.input-border-none{
+    border: none
+}
+
+.input-eye{
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    color:rgb(99, 99, 99);
+    cursor: pointer;
+    padding: 3px
+}
+
+.input-eye:hover{
+    background-color: rgb(223, 223, 223);
+    border-radius: 50%;
+}
