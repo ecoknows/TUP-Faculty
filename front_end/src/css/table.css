@@ -4,7 +4,7 @@
     width: 100%;
     overflow:auto;
     word-break: break-all;
-    min-height: 1.5rem;
+    min-height: 30px;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
 }

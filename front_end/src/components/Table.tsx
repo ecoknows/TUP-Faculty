@@ -32,10 +32,12 @@ function Table<ItemT>(props : TableProps<ItemT>){
         className,
     );
 
+    
+
     return (
-        <View style={{width: 1000, height: 46 * numColumn  }}>
+        <View style={{width: 1000, height: 50 + 30 * numColumn , }}>
             <View {...rest} className={classes} column width='fill' style={{border:'1px solid black'}}>
-                <View style={{overflowY:'scroll', height: 40}}>
+                <View style={{ overflowY:'scroll',height: 50}}>
                         {
                             header.map(
                                 (name : string, index: number)=><View className='table-header'>
