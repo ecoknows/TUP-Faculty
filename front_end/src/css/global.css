@@ -1,15 +1,17 @@
 
 /*
     GLOBAL CSS
+    USE THIS TO SPECIY ITEMS
 */
 
 /* Default View properties */
 .view{
     display: flex;
-    background-color: white;
-}
+}   
 
 /* SIZES */
+.flex-1{ flex: 1}
+.flex-0{ flex: 0}
 .height-100vh {height: 100vh}
 .width-fill {width: 100%;}
 .heigth-fill {height: 100%;}
@@ -22,6 +24,8 @@
 
 
 /*COLOR*/
+.color-red {color: red;}
+.color-black {color: black;}
 .bg-white {background-color: white;}
 .bg-red {background-color: red;}
 .bg-blue {background-color: blue;}

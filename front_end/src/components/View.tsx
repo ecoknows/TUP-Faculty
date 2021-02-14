@@ -2,7 +2,7 @@ import React, {forwardRef,HTMLAttributes} from 'react'
 import classNames from 'classnames';
 
 
-interface Props extends HTMLAttributes<HTMLDivElement>{
+export interface ViewProps extends HTMLAttributes<HTMLDivElement>{
     children: any,
     className?: string,
     
@@ -11,9 +11,11 @@ interface Props extends HTMLAttributes<HTMLDivElement>{
     column?: boolean,
     color?: string,
     relative?: boolean,
+    flex?: boolean,
 
 
     height?: string,
+    width?: string,
 }
 
 const View = forwardRef(
@@ -26,11 +28,13 @@ const View = forwardRef(
         column,
         color,
         relative,
+        flex,
 
         height,
+        width,
 
         ...props
-    }: Props, ref) =>
+    }: ViewProps, ref) =>
     {
 
         
@@ -42,11 +46,13 @@ const View = forwardRef(
             'view',
             className,
             height && `height-${height}`,
+            width && `width-${width}`,
             center && `items-center`,
             middle && `items-middle`,
             column && `items-column`,
             color && `bg-${color}`,
             relative && `relative`,
+            flex && 'flex-1', 
         );
 
         return <div {...props} className={classes}>

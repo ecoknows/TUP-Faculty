@@ -1,0 +1,21 @@
+
+/* TABLE CSS */
+.table-row{
+    width: 100%;
+    overflow:auto;
+    word-break: break-all;
+    min-height: 1.5rem;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+.table-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    
+}
+.table-header span{ word-break: break-all}

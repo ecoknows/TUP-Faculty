@@ -1,20 +1,18 @@
-import React, {forwardRef, HTMLAttributes} from 'react'
+import React, {forwardRef, HTMLAttributes,FunctionComponent, ReactElement} from 'react'
 import classNames from 'classnames';
 import { View } from '.';
 
 
 interface Props extends HTMLAttributes<HTMLDivElement>{
-    children: typeof View,
+    children: string | number,
     className?: string,
 
     type?: string,
+    black?: boolean,
+    margin?: string,
 
     height?: string,
     clear?: boolean,
-}
-
-const defaultProps = {
-    backgroundColor: 'bg-white',
 }
 
 
@@ -24,6 +22,7 @@ const Text = forwardRef(
         className,
 
         type,
+        black,
 
         height,
         clear,
@@ -32,15 +31,21 @@ const Text = forwardRef(
     }: Props, ref) =>
     {
 
+        const styles = [
+            {color: 'red'},
+            {color: 'red'},
+        ];
         
+                
         if(ref){
             (props as any).ref = ref;
         }
 
         const classes  = classNames(
+            'text',
             className,
-            defaultProps.backgroundColor,
-            type && `text-${type}`
+            type && `text-${type}`,
+            black && `color-black`,
         );
 
         return <span {...props} className={classes}>

@@ -1,24 +1,22 @@
 
-import { Button, Form} from 'react-bootstrap';
-import {View, Text, Input} from '../components';
+import { Form} from 'react-bootstrap';
+import {View, Text, Input, Button} from '../components';
 
 
 function LoginPage(){
-    
     return (
         <View height='100vh' center middle column >
-            <Text type='title' ><View></View></Text>
-            <Form >
-                 <Form.Group controlId="formBasicEmail">
+            <Text type='title' black style={{marginBottom: 100}}> Welcome Admin</Text>
+            <Form className='view items-column items-center items-middle'>
+                 <Form.Group >
                     <Input placeholder='Username' type='text'/>
                  </Form.Group>
 
-                 <Form.Group controlId="formBasicPassword">
+                 <Form.Group >
                      <Input placeholder='Password' type='password' toggler/>
-                     <Form.Text className="text-muted">
-                         forgot password
-                     </Form.Text>
+                     <Text >forgot password</Text>
                  </Form.Group>
+                 <Button title='Login' />
              </Form>
         </View>
     )

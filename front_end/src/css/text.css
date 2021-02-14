@@ -1,6 +1,13 @@
-/* FONTS */
+/* 
+    TEXT CSS COMPONENT
+*/
 
-/* Size */ 
+.text{
+    font-size: 0.8em;
+    color: rgb(126, 126, 126); 
+}
+
+/* FONTS */
 .text-title {
     font-size: 2em;
     font-weight: bolder;
