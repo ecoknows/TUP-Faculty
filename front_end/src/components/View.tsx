@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 
 export interface ViewProps extends HTMLAttributes<HTMLDivElement>{
-    children: any,
+    children?: any,
     className?: string,
     
     center?: boolean,
@@ -14,6 +14,7 @@ export interface ViewProps extends HTMLAttributes<HTMLDivElement>{
     flex?: boolean,
     end?: boolean,
 
+    margin?: string,
 
     height?: string,
     width?: string,
@@ -31,6 +32,8 @@ const View = forwardRef(
         relative,
         flex,
         end,
+
+        margin,
 
         height,
         width,
@@ -56,7 +59,13 @@ const View = forwardRef(
             color && `bg-${color}`,
             relative && `relative`,
             flex && 'flex-1', 
-            end && 'items-end'
+            end && 'items-end',
+
+            // TAILWINDCSS START
+            margin,
+
+
+
         );
 
         return <div {...props} className={classes}>

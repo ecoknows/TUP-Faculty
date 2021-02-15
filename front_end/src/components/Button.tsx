@@ -1,10 +1,12 @@
 import React, {forwardRef,HTMLAttributes} from 'react'
 import classNames from 'classnames';
+import View, {ViewProps} from './View';
 
 
-interface Props extends HTMLAttributes<HTMLDivElement>{
+interface Props extends ViewProps{
     className?: string,
     title: string,
+    margin?: string,
    
 }
 
@@ -28,9 +30,9 @@ const Button = forwardRef(
         );
 
         return (
-            <div className={classes}> 
+            <View className={classes} {...props}> 
                  {title} 
-            </div>
+            </View>
         )
     }
 )

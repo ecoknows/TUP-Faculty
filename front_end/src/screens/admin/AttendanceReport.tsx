@@ -18,6 +18,8 @@ const AttendanceReport = () => {
     return (
         <View height='100vh' middle center column>
             <View end style={{width: '50%'}} column>
+                <Button title='Filter' margin='mb-10' />
+                
                 <Table
                         header={['ID No.','Name', 'Department','Date','Time-in','Time-out']}
                         numColumn={11}
@@ -48,7 +50,7 @@ const AttendanceReport = () => {
                         )}
                     />
 
-                <Button title='Generate Report' />
+                <Button title='Generate Report' margin='mt-10' />
             </View>
               
         </View>
