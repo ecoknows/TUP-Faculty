@@ -6,6 +6,7 @@ interface TableProps<ItemT>{
     className?: string,
     header: string[],
     numColumn: number;
+    width: number | string;
     data: ItemT[],
     renderItem: (props: {item: ItemT}) => void,
 }
@@ -25,6 +26,7 @@ function Table<ItemT>(props : TableProps<ItemT>){
         data,
         renderItem,
         numColumn,
+        width,
         ...rest
     } = props; 
 
@@ -35,9 +37,9 @@ function Table<ItemT>(props : TableProps<ItemT>){
     
 
     return (
-        <View style={{width: 1000, height: 50 + 30 * numColumn , }}>
+        <View style={{width , height : 50 + 32.15 * numColumn}}>
             <View {...rest} className={classes} column width='fill' style={{border:'1px solid black'}}>
-                <View style={{ overflowY:'scroll',height: 50}}>
+                <View style={{height: 50, paddingRight: 15}}>
                         {
                             header.map(
                                 (name : string, index: number)=><View className='table-header'>
@@ -53,6 +55,14 @@ function Table<ItemT>(props : TableProps<ItemT>){
                         data.map(
                             (item) => renderItem({item})
                         )
+                    }
+                    { data.length < numColumn ?
+                        Array.from(Array(numColumn - data.length)).map(()=><Body>
+                            {
+                               Array.from(Array(header.length)).map(()=><Row>{}</Row>) 
+                            }
+                            
+                        </Body>) : null
                     }
                 </View>
             </View>

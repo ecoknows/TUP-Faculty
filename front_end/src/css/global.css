@@ -9,6 +9,7 @@
     display: flex;
 }   
 
+
 /* SIZES */
 .flex-1{ flex: 1}
 .flex-0{ flex: 0}
@@ -21,6 +22,7 @@
 .items-center { justify-content: center;}
 .items-middle { align-items: center;}
 .items-column { flex-direction: column;}
+.items-end { align-items: flex-end;}
 
 
 /*COLOR*/

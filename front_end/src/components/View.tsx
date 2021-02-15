@@ -12,6 +12,7 @@ export interface ViewProps extends HTMLAttributes<HTMLDivElement>{
     color?: string,
     relative?: boolean,
     flex?: boolean,
+    end?: boolean,
 
 
     height?: string,
@@ -29,6 +30,7 @@ const View = forwardRef(
         color,
         relative,
         flex,
+        end,
 
         height,
         width,
@@ -44,6 +46,7 @@ const View = forwardRef(
 
         const classes  = classNames(
             'view',
+            'bg-gray-50',
             className,
             height && `height-${height}`,
             width && `width-${width}`,
@@ -53,6 +56,7 @@ const View = forwardRef(
             color && `bg-${color}`,
             relative && `relative`,
             flex && 'flex-1', 
+            end && 'items-end'
         );
 
         return <div {...props} className={classes}>
