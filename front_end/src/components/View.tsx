@@ -48,17 +48,16 @@ const View = forwardRef(
         }
 
         const classes  = classNames(
-            'view',
-            'bg-gray-50',
+            'flex',
             className,
-            height && `height-${height}`,
-            width && `width-${width}`,
-            center && `items-center`,
-            middle && `items-middle`,
-            column && `items-column`,
+            height && `h-${height}`,    
+            width && `w-${width}`,
+            center && `justify-center`,
+            middle && `items-center`,
+            column && `flex-col`,
             color && `bg-${color}`,
             relative && `relative`,
-            flex && 'flex-1', 
+            flex && 'flex', 
             end && 'items-end',
 
             // TAILWINDCSS START

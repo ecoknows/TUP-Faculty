@@ -1,5 +1,4 @@
-import { View, Table, Button } from '../../components';
-
+import { View, Table, Button, Slider } from '../../components';
 interface AttendanceInterface {
     _id: string,
     name: string,
@@ -11,14 +10,15 @@ interface AttendanceInterface {
 
 
 const data : AttendanceInterface[] = [
-    {_id : '12345', name:'Jerico C. Villaraza', department: 'COS', date: 'December 2, 1999', in: '12:00', out:'1:00'}
+    {_id : '12345', name:'Eco C. Villaraza', department: 'COS', date: 'December 2, 1999', in: '12:00', out:'1:00'}
 ];
 
 const AttendanceReport = () => {
+  
     return (
-        <View height='100vh' middle center column>
-            <View end style={{width: '50%'}} column>
-                <Button title='Filter' margin='mb-10' />
+        <View height='screen' middle center column>
+            <View end style={{width: '80%'}} column>
+                <Slider items={['date', 'Today','In 7 days', 'In 15 days', 'Custom']}/>
                 
                 <Table
                         header={['ID No.','Name', 'Department','Date','Time-in','Time-out']}

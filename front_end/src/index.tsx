@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/global.css';
+// import './css/global.css';
 import './css/table.css';
 import './css/text.css';
 import './css/input.css';
 import './css/button.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>

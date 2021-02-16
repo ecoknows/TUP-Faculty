@@ -29,20 +29,14 @@ function Table<ItemT>(props : TableProps<ItemT>){
         width,
         ...rest
     } = props; 
-
-    const classes  = classNames(
-        className,
-    );
-
     
-
     return (
-        <View style={{width , height : 50 + 32.15 * numColumn}}>
-            <View {...rest} className={classes} column width='fill' style={{border:'1px solid black'}}>
-                <View style={{height: 50, paddingRight: 15}}>
+        <View style={{width , height : 50 + 32.15 * numColumn}} >
+            <View {...rest} className='border border-solid border-black' column width='full'>
+                <View style={{overflowY: 'scroll',minHeight: 50}}>
                         {
                             header.map(
-                                (name : string, index: number)=><View className='table-header'>
+                                (name : string, index: number)=><View className='table-header px-2'>
                                     <span>{name}</span>
                                     </View>
                                 
@@ -50,7 +44,7 @@ function Table<ItemT>(props : TableProps<ItemT>){
                         }
                 </View>
                         
-                <View column style={{overflowY: 'scroll', height: '100%'}}>
+                <View column className='overflow-y-scroll h-screen'>
                     { 
                         data.map(
                             (item) => renderItem({item})
@@ -88,7 +82,7 @@ function Row<ItemT>(props : RowProps<ItemT>){
     } = props; 
 
     return(
-        <View className='table-row' style={style} {...rest}>
+        <View className='table-row px-2' style={style} {...rest}>
         {children}
         </View>
     )
