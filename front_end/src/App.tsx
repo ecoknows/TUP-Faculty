@@ -19,7 +19,7 @@ function FacultyMember({match} : {match:{url:string}}){
   return(
     <View>
 
-        <View flex column absolute color='white' style={{border: '1px solid black', padding: 10, top: 100, left: 10}}>
+        <View column absolute color='white' style={{border: '1px solid black', padding: 10, top: 10, left: 10}} className='hidden lg:flex'>
             <Text className='text-black text-lg mb-2 cursor-pointer'>Faculty Load</Text>
             <Text className='text-black text-lg mb-2 cursor-pointer'>Class List</Text>
             <Text className='text-black text-lg mb-2 cursor-pointer'>Generate Report</Text>

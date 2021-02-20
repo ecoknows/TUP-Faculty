@@ -32,7 +32,7 @@ function Table<ItemT>(props : TableProps<ItemT>){
     } = props; 
     
     return (
-        <View style={{width , height : 50 + 32.15 * numColumn}} flex>
+        <View style={{width , height : 50 + 32.15 * numColumn}} flex className={className}>
             <View {...rest} className='border border-solid border-black' column width='full' flex>
                 <View style={{overflowY: 'scroll',minHeight: 50}} flex>
                         {

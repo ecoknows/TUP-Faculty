@@ -9,6 +9,27 @@
     border-bottom: 1px solid black;
     border-right: 1px solid black;
 }
+.table-row-time{
+    display: flex;
+    width: 50%;
+    overflow:auto;
+    justify-content: center;
+    align-items: center;
+    word-break: break-all;
+    min-height: 2rem;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+.table-row-shaded{
+    display: flex;
+    width: 100%;
+    overflow:auto;
+    word-break: break-all;
+    min-height: 2rem;
+    background-color: #c5d7bd;
+    border-right: 1px solid black;
+    justify-content: center;
+}
 .table-header{
     display: flex;
     justify-content: center;

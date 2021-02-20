@@ -14,6 +14,7 @@ export interface ViewProps extends HTMLAttributes<HTMLDivElement>{
     flex?: boolean,
     end?: boolean,
     absolute?: boolean,
+    style?: object,
 
 
     margin?: string,

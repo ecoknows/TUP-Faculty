@@ -7,18 +7,22 @@ interface TableProps<ItemT>{
     className?: string,
     width: number | string;
     timeExisted: string[],
-    dataSchedules:{start: string, end: string, day: string}[],
+    dataSchedules:{start: string, end: string, day: string, subject: string}[],
 }
 
 interface RowProps<ItemT> extends ViewProps {
     className?: string,
+
+    shaded?: boolean,
+    isEnd?: boolean,
+    isTime?: boolean,
+
     style?: {},
 }
 
-const data_time = ['7:00','7:30','8:00','8:30','9:00','9:30','10:00','10:30','11:00'];
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
-function Table<ItemT>(props : TableProps<ItemT>){
+function Schedule<ItemT>(props : TableProps<ItemT>){
     
     const {
         className,
@@ -30,9 +34,12 @@ function Table<ItemT>(props : TableProps<ItemT>){
     } = props; 
     
     return (
-        <View style={{width}} flex>
+        <View flex style={{width, height: 50 + 32.15 * timeExisted.length}}  className={className}>
             <View {...rest} className='border border-solid border-black' column width='full' flex>
                 <View style={{overflowY: 'scroll',minHeight: 50}} flex>
+                        <Row isTime={true}>
+                            Time
+                        </Row>
                         {
                             days.map(day => (
 
@@ -47,24 +54,33 @@ function Table<ItemT>(props : TableProps<ItemT>){
                     {
                         timeExisted.map((time, index) => (
                             <Body>
-                                <Row>
+                                <Row isTime={true}>
                                     {time}
                                 </Row>
                                 {
                                 days.map(day=>{
                                     let status = false;
+                                    let isEnd = false;
+                                    let isMid = '';
                                     for(let i = 0; i  < dataSchedules.length; i++){
                                         if(dataSchedules[i].day === day){
-                                            const start = data_time.indexOf(dataSchedules[i].start);
-                                            const end = data_time.indexOf(dataSchedules[i].end);
+                                            const start = timeExisted.indexOf(dataSchedules[i].start);
+                                            const end = timeExisted.indexOf(dataSchedules[i].end);
+                                            const mid = ( (end - start) / 2 ) + start
                                             if(start<= index && end >= index){
                                                 status = true;
+                                                if(end === index){
+                                                    isEnd = true
+                                                }
+                                                if(mid === index){
+                                                    isMid = dataSchedules[i].subject;
+                                                }
                                             }
                                         }
                                     }
                                     return (
-                                        <Row>
-                                            {status ? "eco" : null}
+                                        <Row shaded={status} isEnd={isEnd}>
+                                            {isMid}
                                         </Row>
                                     )
                                 }) 
@@ -88,20 +104,25 @@ function Body({children} : any){
 
 function Row<ItemT>(props : RowProps<ItemT>){
     const {
-        className,
         children,
         style,
+        shaded,
+        isEnd,
+        isTime,
         ...rest
     } = props; 
 
     return(
-        <View flex className='table-row px-2' style={style} {...rest}>
-        {children}
+        <View flex className={shaded ?`table-row-shaded px-2 ${isEnd ? 'border-b border-solid border-black' : ''}` : 
+        `${isTime ? 'table-row-time': 'table-row'} px-2`
+        
+        } style={style} {...rest}>
+            {children} 
         </View>
     )
 }
 
 
-Table.Body = Body;
-Table.Row = Row;
-export default Table
+Schedule.Body = Body;
+Schedule.Row = Row;
+export default Schedule
