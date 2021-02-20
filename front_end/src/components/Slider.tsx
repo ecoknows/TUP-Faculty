@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 interface SliderProps extends HTMLAttributes<HTMLSelectElement>{
     items: string[],
+    placeHolder: string,
     className?: string,
 }
 
@@ -11,6 +12,7 @@ function Slider(props : SliderProps){
     const {
         items,
         className,
+        placeHolder,
 
         ...rest
     } = props;
@@ -20,6 +22,8 @@ function Slider(props : SliderProps){
         'border',
         'border-black',
         'border-solid',
+        'bg-white',
+        'font-sans text-lg px-5 py-2',
         'mb-5',
         'px-2',
         className,
@@ -27,6 +31,7 @@ function Slider(props : SliderProps){
 
     return(
         <select  {...rest} className={classes}>
+            <option value='' disabled selected hidden>{placeHolder}</option>
             {
                 items.map((item)=><option value={item}>{item}</option>)
             }

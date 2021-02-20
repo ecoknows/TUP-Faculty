@@ -16,9 +16,9 @@ const data : AttendanceInterface[] = [
 const AttendanceReport = () => {
   
     return (
-        <View height='screen' middle center column>
-            <View end style={{width: '80%'}} column>
-                <Slider items={['date', 'Today','In 7 days', 'In 15 days', 'Custom']}/>
+        <View height='screen' middle center column flex>
+            <View end style={{width: '80%'}} column flex>
+                <Slider items={['date', 'Today','In 7 days', 'In 15 days', 'Custom']} placeHolder='Filter'/>
                 
                 <Table
                         header={['ID No.','Name', 'Department','Date','Time-in','Time-out']}

@@ -27,13 +27,14 @@ function Table<ItemT>(props : TableProps<ItemT>){
         renderItem,
         numColumn,
         width,
+
         ...rest
     } = props; 
     
     return (
-        <View style={{width , height : 50 + 32.15 * numColumn}} >
-            <View {...rest} className='border border-solid border-black' column width='full'>
-                <View style={{overflowY: 'scroll',minHeight: 50}}>
+        <View style={{width , height : 50 + 32.15 * numColumn}} flex>
+            <View {...rest} className='border border-solid border-black' column width='full' flex>
+                <View style={{overflowY: 'scroll',minHeight: 50}} flex>
                         {
                             header.map(
                                 (name : string, index: number)=><View className='table-header px-2'>
@@ -44,7 +45,7 @@ function Table<ItemT>(props : TableProps<ItemT>){
                         }
                 </View>
                         
-                <View column className='overflow-y-scroll h-screen'>
+                <View column className='overflow-y-scroll h-screen' flex>
                     { 
                         data.map(
                             (item) => renderItem({item})
@@ -53,7 +54,7 @@ function Table<ItemT>(props : TableProps<ItemT>){
                     { data.length < numColumn ?
                         Array.from(Array(numColumn - data.length)).map(()=><Body>
                             {
-                               Array.from(Array(header.length)).map(()=><Row>{}</Row>) 
+                                Array.from(Array(header.length)).map(()=><Row>{}</Row>) 
                             }
                             
                         </Body>) : null
@@ -65,9 +66,10 @@ function Table<ItemT>(props : TableProps<ItemT>){
 }
 
 
+
 function Body({children} : any){
     return(
-        <View >  
+        <View flex>  
             {children}
         </View>
     )
@@ -82,7 +84,7 @@ function Row<ItemT>(props : RowProps<ItemT>){
     } = props; 
 
     return(
-        <View className='table-row px-2' style={style} {...rest}>
+        <View flex className='table-row px-2' style={style} {...rest}>
         {children}
         </View>
     )

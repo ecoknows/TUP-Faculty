@@ -4,7 +4,6 @@ import App from './App';
 import './index.css';
 // import './css/global.css';
 import './css/table.css';
-import './css/text.css';
 import './css/input.css';
 import './css/button.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';

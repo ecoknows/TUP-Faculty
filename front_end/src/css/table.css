@@ -1,6 +1,7 @@
 
 /* TABLE CSS */
 .table-row{
+    display: flex;
     width: 100%;
     overflow:auto;
     word-break: break-all;

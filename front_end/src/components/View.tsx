@@ -13,6 +13,8 @@ export interface ViewProps extends HTMLAttributes<HTMLDivElement>{
     relative?: boolean,
     flex?: boolean,
     end?: boolean,
+    absolute?: boolean,
+
 
     margin?: string,
 
@@ -37,6 +39,7 @@ const View = forwardRef(
 
         height,
         width,
+        absolute,
 
         ...props
     }: ViewProps, ref) =>
@@ -48,7 +51,6 @@ const View = forwardRef(
         }
 
         const classes  = classNames(
-            'flex',
             className,
             height && `h-${height}`,    
             width && `w-${width}`,
@@ -59,6 +61,7 @@ const View = forwardRef(
             relative && `relative`,
             flex && 'flex', 
             end && 'items-end',
+            absolute && 'absolute',
 
             // TAILWINDCSS START
             margin,

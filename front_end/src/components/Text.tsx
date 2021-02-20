@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import { View } from '.';
 
 
-interface Props extends HTMLAttributes<HTMLDivElement>{
+interface Props extends HTMLAttributes<HTMLParagraphElement>{
     children: string | number,
     className?: string,
 
     type?: string,
     black?: boolean,
     margin?: string,
-
+    
     height?: string,
     clear?: boolean,
 }
@@ -30,11 +30,6 @@ const Text = forwardRef(
         ...props
     }: Props, ref) =>
     {
-
-        const styles = [
-            {color: 'red'},
-            {color: 'red'},
-        ];
         
                 
         if(ref){
@@ -42,9 +37,9 @@ const Text = forwardRef(
         }
 
         const classes  = classNames(
-            'text',
             className,
-            type && `text-${type}`,
+            type == "title" && "text-2em font-extrabold",
+            type == "default" && "text-0.8em text-gray-700",
             black && `color-black`,
         );
 
