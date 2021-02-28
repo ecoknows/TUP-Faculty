@@ -4,7 +4,7 @@ import { View } from '.';
 
 
 interface Props extends HTMLAttributes<HTMLParagraphElement>{
-    children: string | number,
+    children: string | number | object,
     className?: string,
 
     type?: string,

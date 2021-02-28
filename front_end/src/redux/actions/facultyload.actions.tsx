@@ -23,8 +23,6 @@ export const listFacultyLoad = ()=> async(dispatch : any, getState: any)=>{
 }
 
 export const sortFacultyLoad = (info : { sortKey: object})=> async(dispatch : any, getState: any)=>{
-  dispatch({type: FACULTY_LOAD_REQUEST});
-  
   const {
       userDetails:{userData},
     } = getState();

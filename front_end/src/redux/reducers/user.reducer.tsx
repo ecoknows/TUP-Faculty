@@ -1,4 +1,4 @@
-import { UserActionType,UserReducerType,  USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, UserSignInInterface, USER_SIGNOUT } from '../types/user.types';
+import { UserActionType,UserReducerType,  USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT, USER_TIME_IN } from '../types/user.types';
 
 const getUserData = (item : any)=>{
     return JSON.parse(item);
@@ -21,6 +21,10 @@ export const userSignInReducer =(state:UserReducerType = initialState, action : 
             return {loading: false, error: action.payload}
         case USER_SIGNOUT:
             return {loading : true}
+        case USER_TIME_IN:
+            console.log(action.payload, " hatdog");
+            
+            return {loading: false, userData: action.payload}
         default: 
             return state;
     }

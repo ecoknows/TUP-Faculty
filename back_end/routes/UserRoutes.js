@@ -73,4 +73,29 @@ userRoutes.post('/login',    expressAsyncHandler(async(req,res)=>{
 )
 
 
+userRoutes.put('/user/update_time/:id',   expressAsyncHandler(async(req,res)=>{
+    const userId = req.params.id;
+    const time_in = req.query.time_in;
+    const user = await UserModel.findById(userId);
+    const locale = 'en';
+
+    if(user){
+        const current_date = new Date();
+        if(time_in == 'time_in')
+            user.time_in = current_date.toLocaleTimeString(locale, { hour: 'numeric', hour12: true, minute: 'numeric', second: 'numeric' });
+        else{
+            user.time_out = current_date.toLocaleTimeString(locale, { hour: 'numeric', hour12: true, minute: 'numeric', second: 'numeric' });
+        }
+        const date = `${current_date.toLocaleDateString(locale, { month: 'long' })}, ${current_date.getDate()} ${current_date.getFullYear()}\n\n`;
+        user.date_time_in =  date;
+        const userUpdated = await user.save();
+        res.send({ message: 'User Updated', userUpdated });
+    }else{    
+        res.status(401).send({ message: 'Invalid USER ID' });   
+    }
+
+})
+)
+
+
 export default userRoutes;

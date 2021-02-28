@@ -28,7 +28,7 @@ function GenerateReport(){
                 <Table
                     header={['Prof','Subject', 'Units','Day','Time','No. of Hours','Venue','No. of Students','First Day of Service']}
                     numColumn={10}
-                    width={'90vw'}
+                    width={'100%'}
                     data={data}
                     className='mb-4'
                     renderItem={({item, index})=>(

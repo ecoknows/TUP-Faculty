@@ -20,9 +20,10 @@ const user = [
         name:"PERAGRINO B. AMADOR, JR",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
+        
         is_admin: false,
     },
     {
@@ -33,9 +34,9 @@ const user = [
         name:"FRANCIS L. DELA CRUZ",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -46,9 +47,9 @@ const user = [
         name:"MARIA CARMELA F. FRANCISCO",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -59,9 +60,9 @@ const user = [
         name:"FRANCIS L. DELA CRUZ ",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -72,9 +73,9 @@ const user = [
         name:"MAY M. GARCIA",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -85,9 +86,9 @@ const user = [
         name:"WELANNIE M. MOLINO",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -98,9 +99,9 @@ const user = [
         name:"MAY M. GARCIA",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -111,9 +112,9 @@ const user = [
         name:"DOLORES MONTESINES",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -124,9 +125,9 @@ const user = [
         name:"DARWIN C. VARGAS",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -137,9 +138,9 @@ const user = [
         name:"DOLORES MONTESINES",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -150,9 +151,9 @@ const user = [
         name:"FERNANDO L. RENEGADO",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -163,9 +164,9 @@ const user = [
         name:"ELANIE J. VIZCONDE",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -176,9 +177,9 @@ const user = [
         name:"FRANCIS A. ALFARO",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -189,9 +190,9 @@ const user = [
         name:"MARITES BOLAÑOS",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -202,9 +203,9 @@ const user = [
         name:"MA. IAN P. DE LOS TRINOS ",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -215,9 +216,9 @@ const user = [
         name:"VICENTE ESTEMBER",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -228,9 +229,9 @@ const user = [
         name:"JAN EILBERT L. LEE",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -241,9 +242,9 @@ const user = [
         name:"MELBERN ROSE C. MALTEZO ",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -254,9 +255,9 @@ const user = [
         name:"JULIUS C. SARENO ",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -267,9 +268,9 @@ const user = [
         name:"MIDETH ABISADO",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -280,9 +281,9 @@ const user = [
         name:"CARLO GODOY JR.",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -293,9 +294,9 @@ const user = [
         name:"MARK ANTHONY MACARANAS",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -306,9 +307,9 @@ const user = [
         name:"FERMIN G. MISSION, JR.",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -319,9 +320,9 @@ const user = [
         name:"AMANDA JANE C. MENTA",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -332,9 +333,9 @@ const user = [
         name:"KRISTINE BUENA CHARMAIGNE REYES",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -345,9 +346,9 @@ const user = [
         name:"GABRIEL AVELINO SAMPEDRO",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -358,9 +359,9 @@ const user = [
         name:"KEN JON N. TARNATE",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -371,9 +372,9 @@ const user = [
         name:"ARIEL L. TOMAGAN",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
     {
@@ -384,9 +385,9 @@ const user = [
         name:"DANNY UMOSO",
         department: "Computer Studies",
 
-        date_time_in:'',
-        time_in: '',
-        time_out: '',
+        date_time_in:null,
+        time_in: null,
+        time_out: null,
         is_admin: false,
     },
 ]

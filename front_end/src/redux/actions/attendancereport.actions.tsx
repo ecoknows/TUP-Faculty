@@ -22,8 +22,6 @@ export const listAttendanceReport = ()=> async(dispatch : any, getState: any)=>{
 }
 
 export const sortAttendanceReport = (info : { sortKey: object})=> async(dispatch : any, getState: any)=>{
-  dispatch({type: ATTENDANCE_REPORT_REQUEST});
-  
   const {
       userDetails:{userData},
     } = getState();
