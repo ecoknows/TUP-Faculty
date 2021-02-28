@@ -27,12 +27,15 @@ export const signout = () => (dispatch: ({type} : {type: string})=>void) => {
   
   
   
-export const time_status = (status  : any)=> async(dispatch : any)=>{
+export const time_status = (status  : any)=> async(dispatch : any, getState: any)=>{
+
+    const { userDetails: {userData }} = getState();
+    
     try{
         const { data } = await Axios.put(`/user/update_time/${status.userData._id}?time_in=${status.time_in}`)
-        
-        dispatch({type: USER_TIME_IN, payload: data.userUpdated});    
-        localStorage.setItem('userInfo', JSON.stringify(data.userUpdated));
+        const mergeData = {...userData, ...data.userUpdated}
+        dispatch({type: USER_TIME_IN, payload: mergeData});   
+        localStorage.setItem('userInfo', JSON.stringify(mergeData));
     }catch(error){
         
         dispatch({type: USER_SIGNIN_FAIL, payload:

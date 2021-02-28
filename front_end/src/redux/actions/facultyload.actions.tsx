@@ -26,6 +26,7 @@ export const sortFacultyLoad = (info : { sortKey: object})=> async(dispatch : an
   const {
       userDetails:{userData},
     } = getState();
+    
   try{
       
       const { data } = await Axios.post(`/facultyLoad/list/sort`, info,{

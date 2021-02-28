@@ -19,6 +19,7 @@ facultyRoutes.post(
     isAuth,
     expressAsyncHandler(async (req, res) => {
       const body = req.body;
+      console.log(body, " wathe?");
       const result = await FacultyLoadModel.find({professor: body.professor})
       res.send(result);
     })
