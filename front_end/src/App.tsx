@@ -1,32 +1,96 @@
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {useEffect} from 'react';
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import { View, Text } from './components';
-import { AttendanceReport, LoginPage, FacultyLoad } from './screens';
+import { AttendanceReport, LoginPage, FacultyLoad, FTEOverload, GenerateReport, Clock } from './screens';
+import {signout, store} from './redux';
+import {Provider} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path='/' component={LoginPage} exact/>
-        <Route path='/attendanceReport' component={AttendanceReport} exact/>
-        <Route path='/faculty' component={FacultyMember}/>
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path='/' component={LoginPage} exact/>
+          <Route path='/admin' component={Admin}/>
+          <Route path='/faculty' component={FacultyMember}/>
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
+function Admin(props : {match:{url:string}, history: string[]}){
 
-function FacultyMember({match} : {match:{url:string}}){
+  const UserState = useSelector((state:any) => state.userDetails);
+  const { loading, userData, error } = UserState;
+  const {match, history} = props;
+  const dispatch = useDispatch();
+  
+  useEffect(()=>{
+      if(!userData){
+          history.push('/');
+      }
+  },[userData]);
+  
   return(
     <View>
-
-        <View column absolute color='white' style={{border: '1px solid black', padding: 10, top: 10, left: 10}} className='hidden lg:flex'>
-            <Text className='text-black text-lg mb-2 cursor-pointer'>Faculty Load</Text>
-            <Text className='text-black text-lg mb-2 cursor-pointer'>Class List</Text>
-            <Text className='text-black text-lg mb-2 cursor-pointer'>Generate Report</Text>
-            <Text className='text-black text-lg mb-2 cursor-pointer'>Faculty Profile</Text>
+      
+        <View className='hidden lg:flex flex-row items-center justify-center space-x-4 py-4'>
+          
+          <View onClick={()=>{
+            dispatch(signout());
+            history.push('/')
+          }}>
+            <Text className='text-black text-lg mb-2 cursor-pointer'>Logout</Text>
+          </View>
         </View>
 
+        <Route path={`${match.url}/attendanceReport`} component={AttendanceReport} exact/>
+    </View>
+  );
+}
+
+function FacultyMember(props : {match:{url:string}, history: string[]}){
+
+  const UserState = useSelector((state:any) => state.userDetails);
+  const { loading, userData, error } = UserState;
+  const {match, history} = props;
+  const dispatch = useDispatch();
+  
+  useEffect(()=>{
+      if(!userData){
+          history.push('/');
+      }
+  },[userData]);
+  return(
+    <View>
+      
+        <View className='hidden lg:flex flex-row items-center justify-center space-x-4 py-4'>
+          <Link to='/faculty'>
+            <Text className='text-black text-lg mb-2 cursor-pointer'>Clock</Text>
+          </Link>
+          <Link to='/faculty/load'>
+            <Text className='text-black text-lg mb-2 cursor-pointer'>Class List</Text>
+          </Link>
+          <Link to='/faculty/fteoverload'>
+            <Text className='text-black text-lg mb-2 cursor-pointer'>FTE/Overload</Text>
+          </Link>
+          <Link to='/faculty/report'>
+            <Text className='text-black text-lg mb-2 cursor-pointer'>Generate Report</Text>
+          </Link>
+          <View onClick={()=>{
+            dispatch(signout());
+            history.push('/')
+          }}>
+            <Text className='text-black text-lg mb-2 cursor-pointer'>Logout</Text>
+          </View>
+        </View>
+
+        <Route path={`${match.url}`} component={Clock} exact/>
         <Route path={`${match.url}/load`} component={FacultyLoad} exact/>
+        <Route path={`${match.url}/fteoverload`} component={FTEOverload} exact/>
+        <Route path={`${match.url}/report`} component={GenerateReport} exact/>
     </View>
   );
 }

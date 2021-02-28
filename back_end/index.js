@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './routes/UserRoutes.js';
+import facultyRoutes from './routes/FacultyLoadRoutes.js';
 
 dotenv.config()
 const app = express();
@@ -12,7 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // User
-app.use('/',userRoutes);
+app.use('/api',userRoutes);
+app.use('/api/facultyLoad',facultyRoutes);
 
 mongoose.connect(process.env.DATABASE_URL,{
     useNewUrlParser: true,
@@ -26,3 +28,4 @@ mongoose.connect(process.env.DATABASE_URL,{
 app.listen(PORT, ()=>{
     console.log(`TUP Server is Running at ${PORT}`);
 })
+

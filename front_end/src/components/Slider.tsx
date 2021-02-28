@@ -31,9 +31,9 @@ function Slider(props : SliderProps){
 
     return(
         <select  {...rest} className={classes}>
-            <option value='' disabled selected hidden>{placeHolder}</option>
+            <option value='filter'>{placeHolder}</option>
             {
-                items.map((item)=><option value={item}>{item}</option>)
+                items.map((item,index)=><option key={index} value={item}>{item}</option>)
             }
         </select>
     )

@@ -1,61 +1,90 @@
+import { useEffect } from "react";
 import { Button, Schedule, Slider, Table, View } from "../../components"
-interface CourseInterface {
-    courseCode: string,
-    section: string,
-    subjectCode: string,
-    dayOrRoom: string,
-    assign: string,
-    select: boolean,
-}
-
-
-const data : CourseInterface[] = [
-    {courseCode : 'CS303', subjectCode:'Hatdog', section:'BSCSNS-2A', dayOrRoom: 'Monday', assign: 'Mrs.Filmora', select: true}
-];
-
+import {useSelector, useDispatch} from 'react-redux';
+import { listFacultyLoad, sortFacultyLoad } from "../../redux";
+import { FLInterface } from "../../redux/types/facultyload.types";
 
 function FacultyLoad (){
+    
+    const UserState = useSelector((state:any) => state.userDetails);
+    const { userData } = UserState;
+
+    const FacultyState = useSelector((state:any) => state.facultyLoad);
+    const { loading, facultyInfo, error }: FLInterface = FacultyState;
+
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(listFacultyLoad());
+    },[]);
+    useEffect(()=>{
+        console.log(facultyInfo, "wALA PADIN");
+        
+    },[facultyInfo]);
+    
+    
     return (
         <View margin='py-10'>
-            <View flex end column className='lg:pr-10 pr-0'>
-                <View className='flex lg:flex-row flex-col mb-5 lg:space-x-5 lg:justify-end items-center w-full'>
-                    <Slider items={['2020']} placeHolder='School Year'  style={{width: '12rem'}}/>
-                    <Slider items={['2020']} placeHolder='Sem' style={{width: '12rem'}}/>
-                    <Slider items={['2020']} placeHolder='Department' style={{width: '12rem'}}/>
+            <View flex column end className='lg:pr-10 pr-0 mb-10'>
+                <View flex className='space-x-4'>
+                    <input type="text" style={{border:'1px solid black', paddingLeft:10}}/>
+                    <Button title='Search'/>
                 </View>
-                <View className='flex lg:flex-row flex-col mb-5 lg:space-x-5 lg:justify-end items-center w-full'>
-                    <Slider items={['2020']} placeHolder='Course Code' style={{width: '12rem'}}/>
-                    <Slider items={['2020']} placeHolder='Section' style={{width: '12rem'}}/>
-                    <Slider items={['2020']} placeHolder='Subject' style={{width: '12rem'}}/>
-                </View>
-                    <Button title='Search' className='mb-5'/>
             </View>
             <View className='lg:flex lg:flex-column lg:justify-end px-10'>
                 <Table
-                    header={['Course Code','Section', 'Subject Code','Day/Room','Assigned To','Select']}
-                    numColumn={2}
+                    header={['Course Code','Section', 'Subject Code','Day/Time','Assigned To','Action']}
+                    numColumn={10}
                     width={'200vw'}
-                    data={data}
+
+                    onSort={({key,ascending})=>{
+                        switch(key){
+                            case 'Course Code':
+                                dispatch(sortFacultyLoad({sortKey: { curse_code: ascending}}))
+                                break;
+                            case 'Section':
+                                dispatch(sortFacultyLoad({sortKey: { section: ascending }}))
+                                break;
+                            case 'Subject Code':
+                                dispatch(sortFacultyLoad({sortKey: { subject_code: ascending }}))
+                                break;
+                            case 'Day/Time':
+                                
+                                dispatch(sortFacultyLoad({sortKey: { day: ascending }}))
+                                break;
+                            case 'Assigned To':
+                                dispatch(sortFacultyLoad({sortKey: { assigned_to: ascending }}))
+                                break;
+                        }
+                    }}
+                    data={facultyInfo}
                     className='mb-4'
-                    renderItem={({item})=>(
-                        <Table.Body>
+                    renderItem={({item, index})=>(
+                        <Table.Body key={index}>
                             <Table.Row center middle>
-                                {item.courseCode}
+                                {item.course_code}
                             </Table.Row>
                             <Table.Row center middle>
                                 {item.section}
                             </Table.Row>
                             <Table.Row center middle>
-                                {item.subjectCode}
+                                {item.subject_code}
                             </Table.Row>
                             <Table.Row center middle>
-                                {item.dayOrRoom}
+                                {item.day} / {item.time_start} - {item.time_end}
                             </Table.Row>
                             <Table.Row center middle>
-                                {item.assign}
+                                {item.assigned_to}
                             </Table.Row>
                             <Table.Row center middle>
-                                <input checked={item.select} type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
+                                <View className='space-x-2 flex flex-row'>
+                                    <View className='p-1 bg-green-500'>
+                                        <img src={'/assets/images/icons/plus.png'} className='w-4' />
+                                    </View>
+                                    <View className='p-1 bg-red-500'>
+                                        <img src={'/assets/images/icons/cross.png'} className='w-4' />
+                                    </View>
+                                </View>
                             </Table.Row>
                         </Table.Body>
                     
@@ -66,16 +95,15 @@ function FacultyLoad (){
             <View className='lg:flex lg:flex-column lg:justify-end px-10'>
                 <Schedule
                     width={'200vw'}
-                    timeExisted={['7:00','7:30','8:00','8:30','9:00','9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '1:00']}
+                    timeExisted={['7:00','7:30','8:00','8:30','9:00','9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '1:00','1:30','2:00','2:30','3:00']}
                     className='mb-12'
-                    dataSchedules={ 
-                        [
-                            {start : '7:00', end: '8:00', day: "Monday", subject: 'COS312 / BSCS-NS-3A'},
-                            {start : '11:30', end: '1:00', day: "Monday", subject: 'COS311 / BSCS-2B'},
-                            {start : '8:00', end: '11:00', day: "Tuesday", subject: 'COS315 / BSCS-1A'},
-                        ]
-                    }
+                    dataSchedules={facultyInfo}
                 />
+            </View>
+
+            <View flex end column className='lg:pr-10 pr-0'>
+               
+                    <Button title='Confirm' className='mb-5'/>
             </View>
 
 

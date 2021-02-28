@@ -41,3 +41,6 @@
     
 }
 .table-header span{ word-break: break-all}
+.scroll_hidden::-webkit-scrollbar {
+    opacity: 0;
+}
