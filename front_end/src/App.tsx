@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import { View, Text } from './components';
 import { AttendanceReport, LoginPage, FacultyLoad, FTEOverload, GenerateReport, Clock } from './screens';
@@ -60,32 +60,14 @@ function FacultyMember(props : {match:{url:string}, history: string[]}){
   const dispatch = useDispatch();
   
   useEffect(()=>{
-      if(!userData){
-          history.push('/');
-      }
+      // if(!userData){
+      //     history.push('/');
+      // }
   },[userData]);
   return(
     <View>
-      
-        <View className='hidden lg:flex flex-row items-center justify-center space-x-4 py-4'>
-          <Link to='/faculty'>
-            <Text className='text-black text-lg mb-2 cursor-pointer'>Clock</Text>
-          </Link>
-          <Link to='/faculty/load'>
-            <Text className='text-black text-lg mb-2 cursor-pointer'>Class List</Text>
-          </Link>
-          <Link to='/faculty/fteoverload'>
-            <Text className='text-black text-lg mb-2 cursor-pointer'>FTE/Overload</Text>
-          </Link>
-          <Link to='/faculty/report'>
-            <Text className='text-black text-lg mb-2 cursor-pointer'>Generate Report</Text>
-          </Link>
-          <View onClick={()=>{
-            dispatch(signout());
-            history.push('/')
-          }}>
-            <Text className='text-black text-lg mb-2 cursor-pointer'>Logout</Text>
-          </View>
+        <View relative className='hidden lg:flex flex-row items-center justify-center space-x-4 py-4'>
+          <Navbar dispatch={dispatch} history={history} />
         </View>
 
         <Route path={`${match.url}`} component={Clock} exact/>
@@ -96,4 +78,52 @@ function FacultyMember(props : {match:{url:string}, history: string[]}){
   );
 }
 
+let oldVal : any = 0;
+
+function Navbar(props: any){
+  const { dispatch, history, to } = props;
+  const [current, setCurrent] : any= useState();
+  const [tab, setTab] : any= useState();
+
+  const TextRef =(props : any)=>{
+    const { onClick, children, to, className, ...rest } = props
+    const ref = useRef<any>();
+    
+    return <Link to={to}  onClick={()=>{
+                  setCurrent(ref.current?.offsetWidth+20)
+                  oldVal = ref?.current?.offsetLeft;
+                  setTab(children)
+                }}>
+                  
+              <Text {...rest} ref={ref} className={`text-${tab === children ? 'white' : 'black'} text-lg mb-2 cursor-pointer ml-10 ${className}`}>{children}</Text>
+            </Link>
+    
+  
+  }
+  
+
+
+  return(
+    <View relative flex >
+         <TextRef to='/faculty'>Clock</TextRef>
+         <TextRef to='/faculty/load'>Class List</TextRef>
+         <TextRef to='/faculty/fteoverload'>FTE/Overload</TextRef>
+         <TextRef to='/faculty/report'>Generate Report</TextRef>
+        <View onClick={()=>{
+            dispatch(signout());
+            history.push('/')
+          }} className='ml-10'>
+          <Text className='text-black text-lg mb-2 cursor-pointer'>Logout</Text>
+        </View>
+          <View absolute style={{bottom:0, backgroundColor:'red', height: '100%',zIndex: -10, width: current, left: oldVal-10
+          ,
+          transition: "all 0.4s ease"
+          
+          }}/>
+    </View>
+    
+  )
+}
+
 export default App;
+
