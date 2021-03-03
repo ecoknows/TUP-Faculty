@@ -5,3 +5,5 @@ export { default as Button} from './Button';
 export { default as Table} from './Table';
 export { default as Slider} from './Slider';
 export { default as Schedule} from './Schedule';
+export { default as Error} from './Error';
+export { default as UpdateTable} from './UpdateTable';

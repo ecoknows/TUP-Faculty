@@ -1,7 +1,7 @@
-import {useEffect} from 'react';
+import {useEffect,useRef} from 'react';
 import { View, Table, Button, Slider } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import { listAttendanceReport, sortAttendanceReport } from '../../redux';
+import { listAttendanceReport, searchAttendanceReport, sortAttendanceReport } from '../../redux';
 import { ARInterface } from '../../redux/types/attendancereport.types';
 interface AttendanceReportProps{
     history: string[];
@@ -13,6 +13,7 @@ const AttendanceReport = (props : AttendanceReportProps) => {
     const AttendanceReportState = useSelector((state:any) => state.attendenceReport);
     const { userData } = UserState;
     const { loading, reportDetails, error }: ARInterface = AttendanceReportState;
+    const searchInput = useRef<any>();
     const dispatch = useDispatch();
     
     
@@ -30,15 +31,24 @@ const AttendanceReport = (props : AttendanceReportProps) => {
     useEffect(() => {
         if(!userData){
             props.history.push('/');  
-
         }
     }, [userData])
     
   
     return (
-        <View height='screen' middle center column flex>
+        <View height='screen' center middle column flex>
             <View end style={{width: '80%'}} column flex>
-                {/* <Slider items={['date', 'Today','In 7 days', 'In 15 days', 'Custom']} placeHolder='Filter'/> */}
+                <View flex column end className='mb-10'>
+                    <View flex className='space-x-4'>
+                        <input type="text" style={{ border: '1px solid black', paddingLeft: 10 }} ref={searchInput}/>
+                        <Button title='Search' onClick={() => {
+                            if (searchInput?.current.value === "")
+                                dispatch(listAttendanceReport());
+                            else
+                                dispatch(searchAttendanceReport(searchInput?.current.value));
+                        }}/>
+                    </View>
+                </View>
                 
                 <Table
                         header={['ID No.','Name', 'Department','Date','Time-in','Time-out']}

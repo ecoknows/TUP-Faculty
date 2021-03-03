@@ -21,4 +21,5 @@ const userSchema = new mongoose.Schema({
 
 },{timestamps: true})
 
+userSchema.index({'$**': 'text'});
 export default mongoose.model('User', userSchema);

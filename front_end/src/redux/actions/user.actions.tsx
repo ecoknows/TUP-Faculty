@@ -1,14 +1,17 @@
 import Axios from "axios";
 import { USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT, USER_TIME_IN } from "../types/user.types"
 
-export const signin = (username : string | undefined, password : string | undefined)=> async(dispatch : any)=>{
+export const signin = (username : string | undefined, password : string | undefined, isAdmin : boolean)=> async(dispatch : any)=>{
     dispatch({type: USER_SIGNIN_REQUEST});
     try{
         const { data } = await Axios.post('/login',{username, password})
         dispatch({type: USER_SIGNIN_SUCCESS, payload:data});    
-        console.log(data, " wathe");
+        if(isAdmin === data.is_admin){
+            localStorage.setItem('userInfo', JSON.stringify(data));
+        }else{
+            dispatch({type: USER_SIGNIN_FAIL, payload: "Invalid Accounts"})
+        }
         
-        localStorage.setItem('userInfo', JSON.stringify(data));
     }catch(error){
         
         dispatch({type: USER_SIGNIN_FAIL, payload:
@@ -24,7 +27,6 @@ export const signout = () => (dispatch: ({type} : {type: string})=>void) => {
     localStorage.removeItem('shippingAddress');
     dispatch({ type: USER_SIGNOUT });
   };
-  
   
   
 export const time_status = (status  : any)=> async(dispatch : any, getState: any)=>{

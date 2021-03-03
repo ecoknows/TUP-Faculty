@@ -32,6 +32,13 @@ userRoutes.post('/users/sort', expressAsyncHandler(async(req,res)=>{
   })
 )
 
+userRoutes.post('/users/search', expressAsyncHandler(async(req,res)=>{
+    const body = req.body;
+    const search = await UserModel.find({ $text: { $search: body.search } });
+    res.send(search)
+  })
+)
+
 userRoutes.get(
     '/users',
     isAuth,
@@ -65,6 +72,8 @@ userRoutes.post('/login',    expressAsyncHandler(async(req,res)=>{
                     is_admin: user.is_admin,
                     token: generateToken(user),
                 });
+            }else{
+                res.status(401).send({ message: 'Invalid email or password' });   
             }
         }else{    
             res.status(401).send({ message: 'Invalid email or password' });   

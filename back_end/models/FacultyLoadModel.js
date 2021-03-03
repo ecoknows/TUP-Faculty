@@ -20,4 +20,5 @@ const facultySchema = new mongoose.Schema({
 
 },{timestamps: true})
 
+facultySchema.index({'$**': 'text'});
 export default mongoose.model('FacultyLoad', facultySchema);

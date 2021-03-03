@@ -62,17 +62,17 @@ function Table<ItemT>(props : TableProps<ItemT>){
     if(data == undefined)
         data = [];
 
-    
+        // data.length > numColumn ? 'scroll':'hidden'
     return (
         <View style={{width , height : 50 + 32.15 * numColumn}} flex className={className}>
             <View {...rest} className='border border-solid border-black' column width='full' flex>
-                <View style={{overflowY: data.length > numColumn ? 'scroll':'hidden',minHeight: 50}} flex className='scroll_hidden'>
+                <View style={{overflowY:'scroll',minHeight: 50}} flex className='scroll_hidden'>
                         {
                             header.map( (name : string, index: number)=><Headers index={index} sort={sort} setSort={setSort} key={index} name={name}  onSort={onSort}/>)
                         }
                 </View>
                         
-                <View column className='overflow-y-auto h-screen' flex>
+                <View column className='overflow-y-scroll h-screen' flex>
                     { 
                         data.map(
                             (item,index) => renderItem({item,index})

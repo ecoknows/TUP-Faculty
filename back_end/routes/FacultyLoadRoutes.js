@@ -24,13 +24,23 @@ facultyRoutes.post(
       res.send(result);
     })
 );
+
 facultyRoutes.post('/list/sort', expressAsyncHandler(async(req,res)=>{
     const body = req.body;
-    const sorted = await FacultyLoadModel.find({}).sort(body.sortKey);
+    const sorted = await FacultyLoadModel.find({professor: body.professor}).sort(body.sortKey);
     res.send(sorted)
   })
 )
   
+
+
+facultyRoutes.post('/list/search', expressAsyncHandler(async(req,res)=>{
+  const body = req.body;
+  console.log(body.search);
+  const search = await FacultyLoadModel.find({ $text: { $search: body.search } });
+  res.send(search)
+})
+)
 
 
 

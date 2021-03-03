@@ -9,7 +9,7 @@ const data = [{
 
 function FTEOverload(){
     return(
-        <View flex column middle>
+        <View flex column middle className='pt-10' >
             <View flex column className='items-start lg:w-1/3 w-full mb-10 border border-black p-10'>
                 <Slider
                     items={['Eco','Pogi']}

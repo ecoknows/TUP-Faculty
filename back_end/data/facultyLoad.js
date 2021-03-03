@@ -2,7 +2,6 @@ const facultyLoad = [
     {
         professor:"PERAGRINO B. AMADOR, JR",
         course_code:" ",
-
         subject_code:"CC113",
         section:"CS1AB",
         units: 3,
@@ -16,7 +15,6 @@ const facultyLoad = [
     {
         professor:"PERAGRINO B. AMADOR, JR",
         course_code:" ",
-
         subject_code:"CC113",
         section:"ITN1AB",
         units: 3,

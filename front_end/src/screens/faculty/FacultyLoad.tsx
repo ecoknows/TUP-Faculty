@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect,useRef } from "react";
 import { Button, Schedule, Slider, Table, View } from "../../components"
 import {useSelector, useDispatch} from 'react-redux';
-import { listFacultyLoad, sortFacultyLoad } from "../../redux";
+import { listFacultyLoad, searchFacultyLoad, sortFacultyLoad } from "../../redux";
 import { FLInterface } from "../../redux/types/facultyload.types";
 
 function FacultyLoad (){
@@ -11,6 +11,7 @@ function FacultyLoad (){
 
     const FacultyState = useSelector((state:any) => state.facultyLoad);
     const { loading, facultyInfo, error }: FLInterface = FacultyState;
+    const searchInput = useRef<any>();
 
     const dispatch = useDispatch();
 
@@ -27,9 +28,14 @@ function FacultyLoad (){
         <View margin='py-10'>
             <View flex column end className='lg:pr-10 pr-0 mb-10'>
                 <View flex className='space-x-4'>
-                    <input type="text" style={{border:'1px solid black', paddingLeft:10}}/>
-                    <Button title='Search'/>
-                </View>
+                        <input type="text" style={{ border: '1px solid black', paddingLeft: 10 }} ref={searchInput}/>
+                        <Button title='Search' onClick={() => {
+                            if (searchInput?.current.value === "")
+                                dispatch(listFacultyLoad());
+                            else
+                                dispatch(searchFacultyLoad(searchInput?.current.value));
+                        }}/>
+                </View> 
             </View>
             <View className='lg:flex lg:flex-column lg:justify-end px-10'>
                 <Table

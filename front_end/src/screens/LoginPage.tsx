@@ -1,11 +1,13 @@
 import {useEffect, useRef} from 'react';
 import { Form} from 'react-bootstrap';
-import {View, Text, Input, Button} from '../components';
+import {View, Text, Input, Button, Error} from '../components';
 import {useSelector, useDispatch} from 'react-redux';
 import { signin } from '../redux';
+import { USER_SIGNIN_FAIL } from '../redux/types/user.types';
 
 interface LoginPageProps{
     history : string[],
+    match: any,
 }
 
 function LoginPage(props:LoginPageProps){
@@ -14,16 +16,33 @@ function LoginPage(props:LoginPageProps){
     const password = useRef<HTMLInputElement>();
     const username = useRef<HTMLInputElement>();
     const { loading, userData, error } = UserState;
+    const isAdmin = props.match.path === '/admin';
+    
     
     useEffect(()=>{
         if(userData){
-            props.history.push('/admin/attendanceReport');
+            if(userData.is_admin && isAdmin)
+                props.history.push('/admin/home/attendanceReport');
+            if(!userData.is_admin && !isAdmin)
+                props.history.push('/faculty');
         }
-    },[userData]);
-
+    }, [userData]);
+    
     return (
         <View height='screen' flex center middle column >
-            <Text type='title' black style={{marginBottom: 100}}> Welcome Admin</Text>
+            {isAdmin ?
+             <View style={{marginBottom: 50}} column>
+                <Text type='title' black > Welcome Admin </Text>
+            </View> :
+            <View style={{marginBottom: 50}} flex column center middle>
+                <Text type='title' black > Welcome to </Text>
+                <Text type='title' black > TUP Faculty System </Text>
+            </View>
+
+             }
+             {
+                 error ? <Error>{error}</Error> : null
+             }
 
             <form className='flex flex-col'>
 
@@ -33,7 +52,7 @@ function LoginPage(props:LoginPageProps){
                  <Text type='default' >forgot password</Text>
                  <Button title='Login' className='self-center mt-3' onClick={()=>{
 
-                     dispatch(signin(username?.current?.value, password?.current?.value))
+                     dispatch(signin(username?.current?.value, password?.current?.value, isAdmin))
                  }}/>
              </form>
         </View>

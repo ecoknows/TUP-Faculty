@@ -11,8 +11,8 @@ function Clock(){
     
     
     return(
-        <View flex middle center className='pt-10'>
-            <View flex column className='items-center justify-center'>
+        <View flex center className='pt-10 h-screen'>
+            <View flex column className='items-center'>
                 <Text>
                     {wish}
                 </Text>
